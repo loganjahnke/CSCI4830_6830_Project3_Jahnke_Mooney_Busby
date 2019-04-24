@@ -1,0 +1,20 @@
+{
+  "actions": [
+    {
+      "name": "/actions/NewSet/in/LeftPose",
+      "type": "pose"
+    },
+    {
+      "name": "/actions/NewSet/in/RightPose",
+      "type": "pose"
+    }
+  ],
+  "action_sets": [
+    {
+      "name": "/actions/NewSet",
+      "usage": "single"
+    }
+  ],
+  "default_bindings": [],
+  "localization": []
+}
