@@ -9,6 +9,7 @@ public class MissingCounter : MonoBehaviour
 
     public int dirt = 0;
     public float max = 30f;
+    public float totalDirt = 750f;
 
     float mfX;
     float mfY;
@@ -33,7 +34,7 @@ public class MissingCounter : MonoBehaviour
     {
         this.dirt = 500 - this.startCounter.dirt - this.goalCounter.dirt;
         Vector3 v3Scale = this.transform.localScale;
-        this.transform.localScale = new Vector3(10f, this.max * (this.dirt / 500f), 10f);
+        this.transform.localScale = new Vector3(10f, this.max * (this.dirt / this.totalDirt), 10f);
         this.transform.position = new Vector3(this.transform.position.x, this.mfY + this.transform.localScale.y / 2.0f, this.transform.position.z);
     }
 }
