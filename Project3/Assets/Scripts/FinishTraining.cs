@@ -9,7 +9,7 @@ public class FinishTraining : MonoBehaviour
     void Start()
     {
         var firebase = Firebase.CreateNew("https://vr-final-project.firebaseio.com/");
-        var child = firebase.Child("employee_id").Child(DataManagement.instance.gameData.employeeID);
+        var child = firebase.Child("employee_id").Child(DataManagement.instance.gameData.employeeID).Child("sessions");
 
         Debug.Log(DataManagement.instance.gameData.employeeID);
 
@@ -26,9 +26,9 @@ public class FinishTraining : MonoBehaviour
 
         if (!DataManagement.instance.gameData.pushed)
         {
-            child.Push("{ \"dirt_collected\": \"" + DataManagement.instance.gameData.dirtTransported
-            + "\", \"time_taken\": \"" + Time.time
-            + "\", \"date\": \"" + System.DateTime.Now.ToString("MM/dd/yyyy HH:mm") + "\" }", true);
+            child.Push("{ \"dirt_collected\": " + DataManagement.instance.gameData.dirtTransported
+            + ", \"time_taken\": " + Time.time
+            + ", \"date\": \"" + System.DateTime.Now.ToString("MM/dd/yyyy HH:mm") + "\" }", true);
 
             DataManagement.instance.gameData.pushed = true;
         }
