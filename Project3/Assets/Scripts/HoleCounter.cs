@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HoleCounter : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class HoleCounter : MonoBehaviour
         Vector3 v3Scale = this.progressBar.transform.localScale;
         this.progressBar.transform.localScale = new Vector3(10f, this.max * (this.dirt / this.totalDirt), 10f);
         this.progressBar.transform.position = new Vector3(this.progressBar.transform.position.x, this.mfY + this.progressBar.transform.localScale.y / 2.0f, this.progressBar.transform.position.z);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("EndScene");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
