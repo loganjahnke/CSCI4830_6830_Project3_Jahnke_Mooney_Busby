@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MissingCounter : MonoBehaviour
 {
@@ -36,5 +37,12 @@ public class MissingCounter : MonoBehaviour
         Vector3 v3Scale = this.transform.localScale;
         this.transform.localScale = new Vector3(10f, this.max * (this.dirt / this.totalDirt), 10f);
         this.transform.position = new Vector3(this.transform.position.x, this.mfY + this.transform.localScale.y / 2.0f, this.transform.position.z);
+
+        // End session
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DataManagement.instance.gameData.dirtTransported = this.goalCounter.dirt;
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("EndScene");
+        }
     }
 }
