@@ -1,25 +1,25 @@
 {
-   "action_sets" : [
-      {
-         "name" : "/actions/NewSet",
-         "usage" : "single"
-      }
-   ],
-   "actions" : [
-      {
-         "name" : "/actions/NewSet/in/LeftPose",
-         "type" : "pose"
-      },
-      {
-         "name" : "/actions/NewSet/in/RightPose",
-         "type" : "pose"
-      }
-   ],
-   "default_bindings" : [
-      {
-         "binding_url" : "application_generated_unity_project3_exe_binding_oculus_touch.json",
-         "controller_type" : "oculus_touch"
-      }
-   ],
-   "localization" : []
+  "actions": [
+    {
+      "name": "/actions/NewSet/in/LeftPose",
+      "type": "pose"
+    },
+    {
+      "name": "/actions/NewSet/in/RightPose",
+      "type": "pose"
+    }
+  ],
+  "action_sets": [
+    {
+      "name": "/actions/NewSet",
+      "usage": "single"
+    }
+  ],
+  "default_bindings": [
+    {
+      "controller_type": "oculus_touch",
+      "binding_url": "application_generated_unity_project3_exe_binding_oculus_touch.json"
+    }
+  ],
+  "localization": []
 }

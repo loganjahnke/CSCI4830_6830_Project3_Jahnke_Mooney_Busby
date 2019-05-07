@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class CraneRotate : MonoBehaviour
 {
@@ -11,27 +13,34 @@ public class CraneRotate : MonoBehaviour
     public Transform leftController;
     public Transform rightController;
 
-    // Update is called once per frame
-    void Update()
-    {
+	public OVRInput.Controller left;
+	public OVRInput.Controller right;
 
-        ///////////////////////////////////////////////////////////
-        //Rift
-        ///////////////////////////////////////////////////////////
-         //move arm down
-        if (rightController.localRotation.x > -.55f && arm.transform.localRotation.x < 0.3) {
+	// Update is called once per frame
+	void Update()
+    {
+		///////////////////////////////////////////////////////////
+		//Rift
+		///////////////////////////////////////////////////////////
+		//move arm down
+		Debug.Log("Primary");
+		Debug.Log(OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick));
+		Debug.Log("Secondary");
+		Debug.Log(OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick));
+
+		if (rightController.localRotation.x > -.6f && arm.transform.localRotation.x < 0.3) {
             arm.transform.Rotate((vel * 0.5f),0,0,Space.Self);
         }
         //move left
-        if (leftController.localRotation.z > 0.32f) {
+        if (leftController.localRotation.z > -0.1) {
             transform.Rotate(0,-(vel * 0.5f), 0,Space.World);
         }
         //move arm up
-        if ((rightController.localRotation.x < -0.68f || rightController.localRotation.x > 0.7f) && arm.transform.localRotation.x > -0.2) {
+        if (rightController.localRotation.x < -0.73f && arm.transform.localRotation.x > -0.2) {
             arm.transform.Rotate(-(vel * 0.5f), 0,0,Space.Self);
         }
         //move right
-        if (leftController.localRotation.z < 0.2f && leftController.localRotation.z > -0.3) {
+        if (leftController.localRotation.z < -0.25f) {
             transform.Rotate(0, (vel * 0.5f), 0,Space.World);
         }
         //arm2 angle in
@@ -39,15 +48,15 @@ public class CraneRotate : MonoBehaviour
             arm2.transform.Rotate(vel, 0, 0, Space.Self);
         }
         //arm2 angle out
-        if (leftController.localRotation.x > -0.57f && arm2.transform.localRotation.x > -0.6) {
+        if (leftController.localRotation.x > -0.6f && arm2.transform.localRotation.x > -0.6) {
             arm2.transform.Rotate(-vel, 0, 0, Space.Self);
         }
         //bucket close
-        if (rightController.localRotation.z > 0.35f && bucket.transform.localRotation.x < 0.7) {
+        if (rightController.localRotation.z > -0.1f && bucket.transform.localRotation.x < 0.7) {
             bucket.transform.Rotate(vel, 0, 0, Space.Self);
         }
         //bucket open
-        if (rightController.localRotation.z < 0.2f && bucket.transform.localRotation.x > -.65) {
+        if (rightController.localRotation.z < -0.22f && bucket.transform.localRotation.x > -.65) {
             bucket.transform.Rotate(-vel, 0, 0, Space.Self);
         }
 
