@@ -20,50 +20,81 @@ public class CraneRotate : MonoBehaviour
 	void Update()
     {
 		///////////////////////////////////////////////////////////
-		//Rift
+		//Joysticks
 		///////////////////////////////////////////////////////////
 		//move arm down
-		Debug.Log("Primary");
-		Debug.Log(OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick));
-		Debug.Log("Secondary");
-		Debug.Log(OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick));
-
-		if (rightController.localRotation.x > -.6f && arm.transform.localRotation.x < 0.3) {
+		if (Input.GetAxis("RightVertical") < -0.5 && arm.transform.localRotation.x < 0.3) {
             arm.transform.Rotate((vel * 0.5f),0,0,Space.Self);
         }
         //move left
-        if (leftController.localRotation.z > -0.1) {
+        if (Input.GetAxis("LeftHorizontal") < -0.5) {
             transform.Rotate(0,-(vel * 0.5f), 0,Space.World);
         }
         //move arm up
-        if (rightController.localRotation.x < -0.73f && arm.transform.localRotation.x > -0.2) {
+        if (Input.GetAxis("RightVertical") > 0.5 && arm.transform.localRotation.x > -0.2) {
             arm.transform.Rotate(-(vel * 0.5f), 0,0,Space.Self);
         }
         //move right
-        if (leftController.localRotation.z < -0.25f) {
+        if (Input.GetAxis("LeftHorizontal") > 0.5) {
             transform.Rotate(0, (vel * 0.5f), 0,Space.World);
         }
         //arm2 angle in
-        if (leftController.localRotation.x < -.7f && arm2.transform.localRotation.x < 0.5) {
+        if (Input.GetAxis("LeftVertical") > 0.5 && arm2.transform.localRotation.x < 0.5) {
             arm2.transform.Rotate(vel, 0, 0, Space.Self);
         }
         //arm2 angle out
-        if (leftController.localRotation.x > -0.6f && arm2.transform.localRotation.x > -0.6) {
+        if (Input.GetAxis("LeftVertical") < -0.5 && arm2.transform.localRotation.x > -0.6) {
             arm2.transform.Rotate(-vel, 0, 0, Space.Self);
         }
         //bucket close
-        if (rightController.localRotation.z > -0.1f && bucket.transform.localRotation.x < 0.7) {
+        if (Input.GetAxis("RightHorizontal") < -0.5 && bucket.transform.localRotation.x < 0.7) {
             bucket.transform.Rotate(vel, 0, 0, Space.Self);
         }
         //bucket open
-        if (rightController.localRotation.z < -0.22f && bucket.transform.localRotation.x > -.65) {
+        if (Input.GetAxis("RightHorizontal") > 0.5 && bucket.transform.localRotation.x > -.65) {
             bucket.transform.Rotate(-vel, 0, 0, Space.Self);
         }
 
-        ///////////////////////////////////////////////////////////
-        //VIVE CONTROLLLERS
-        /////////////////////////////////////////////////////////// 
-        /* //move arm down
+		///////////////////////////////////////////////////////////
+		//Rift
+		///////////////////////////////////////////////////////////
+		/*//move arm down
+		if (OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y < -0.5 && arm.transform.localRotation.x < 0.3) {
+            arm.transform.Rotate((vel * 0.5f),0,0,Space.Self);
+        }
+        //move left
+        if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x < -0.5) {
+            transform.Rotate(0,-(vel * 0.5f), 0,Space.World);
+        }
+        //move arm up
+        if (OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).y > 0.5 && arm.transform.localRotation.x > -0.2) {
+            arm.transform.Rotate(-(vel * 0.5f), 0,0,Space.Self);
+        }
+        //move right
+        if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).x > 0.5) {
+            transform.Rotate(0, (vel * 0.5f), 0,Space.World);
+        }
+        //arm2 angle in
+        if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y < -0.5 && arm2.transform.localRotation.x < 0.5) {
+            arm2.transform.Rotate(vel, 0, 0, Space.Self);
+        }
+        //arm2 angle out
+        if (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick).y > 0.5 && arm2.transform.localRotation.x > -0.6) {
+            arm2.transform.Rotate(-vel, 0, 0, Space.Self);
+        }
+        //bucket close
+        if (OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).x < -0.5 && bucket.transform.localRotation.x < 0.7) {
+            bucket.transform.Rotate(vel, 0, 0, Space.Self);
+        }
+        //bucket open
+        if (OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick).x > 0.5 && bucket.transform.localRotation.x > -.65) {
+            bucket.transform.Rotate(-vel, 0, 0, Space.Self);
+        }*/
+
+		///////////////////////////////////////////////////////////
+		//VIVE CONTROLLLERS
+		/////////////////////////////////////////////////////////// 
+		/* //move arm down
         if ((rightController.localRotation.x > -.65f && rightController.localRotation.x < 0.7f) && arm.transform.localRotation.x < 0.3) {
             arm.transform.Rotate((vel * 0.5f),0,0,Space.Self);
         }
@@ -95,5 +126,5 @@ public class CraneRotate : MonoBehaviour
         if (rightController.localRotation.z < -0.07f && bucket.transform.localRotation.x > -.65) {
             bucket.transform.Rotate(-vel, 0, 0, Space.Self);
         }*/
-    }
+	}
 }
